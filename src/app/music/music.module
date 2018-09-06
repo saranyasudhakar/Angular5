@@ -1,0 +1,31 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MusicComponent } from './music.component';
+import { MusicService } from './music.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+
+@NgModule({
+  
+  imports: [
+    BrowserModule,
+    HttpModule,
+    HttpClientModule
+  ],
+  declarations: [
+  
+    MusicComponent
+  ],
+  providers: [
+
+      MusicService
+  ],
+
+  bootstrap: [
+      MusicComponent
+    ]
+})
+export class MusicModule {
+  
+ }

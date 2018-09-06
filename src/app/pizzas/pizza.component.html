@@ -1,0 +1,45 @@
+<div class="panel panel-success">
+    <div class="panel panel-heading"><h2>Pizzas List</h2></div>
+    <div class="panel panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                Filter By:
+            </div>
+            
+            <div class="col-md-4">
+                <input type="text">
+            </div>
+        </div>
+            
+            
+        
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                   <tr class="center">
+                       <th>
+                         Type 
+                       </th>
+                       <th>Small</th>
+                       <th>Medium</th>
+                       <th>Large</th>
+                       <th >id</th>
+
+                   </tr>
+                </thead>
+                <tbody class="center">
+                    <tr *ngFor="let pizza of pizzas" >
+                        <td>
+                        {{pizza.type}}</td>
+                        <td>{{pizza.small}}</td>
+                       <td> {{pizza.medium}}</td>
+                       <td>{{pizza.large}}</td>
+                       <td>{{pizza.id}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

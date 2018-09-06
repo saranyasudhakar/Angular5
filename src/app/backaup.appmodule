@@ -1,0 +1,66 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms' ;
+import { HttpModule } from '@angular/http';
+import 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule} from '@angular/router';
+
+import { moviedetailComponent } from './movies /movie-detail.component';
+import { NotFoundComponent } from './movies /shared/notfound.component';
+import { orderComponent } from './orders/order.component';
+import { homeComponent } from './home/home.component';
+import { StarComponent } from './movies /shared/star.component';
+import { MovieService } from './movies /movies.service';
+import { FilterPipe } from './movies /movies.pipe';
+import { MovieComponent } from './movies /movies.component';
+import { myUpperPipe } from './movies /moviesupper.pipe';
+import { AppComponent } from './app.component';
+
+
+
+@NgModule({
+
+imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+          {path: 'movies', component: MovieComponent},
+          {path: 'movies/:id', component:moviedetailComponent},
+          {path: 'orders', component:orderComponent},
+          {path: 'home', component:homeComponent},
+          {path: '', redirectTo:'home', pathMatch:'full'},
+          {path:'**', component:NotFoundComponent}
+
+    ])
+],
+
+declarations: [
+    AppComponent,
+    MovieComponent,
+    myUpperPipe,
+    FilterPipe,
+    StarComponent,
+    orderComponent,
+    homeComponent,
+    moviedetailComponent,
+    NotFoundComponent
+   
+
+    
+],
+
+bootstrap:[
+    AppComponent
+],
+providers:[
+    MovieService
+] 
+
+})
+
+export class AppModule {
+
+}

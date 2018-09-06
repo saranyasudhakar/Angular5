@@ -1,0 +1,70 @@
+<h1 style="color:green" class="text-center">@@@Music Component@@@</h1>
+
+<div class="container">
+<div class="row" *ngIf='artists'>
+    <div class="card col-md-6" style="width:400px;margin-left:10%;margin-top:4%"  *ngFor="let music of artists">
+            <img class="card-img-top" src='./assets/covers/{{music.cover}}.jpg' [style.width.px]="imageWidth" alt="Card image">
+            <div class="card-body">
+            <h3 class="card-title" style="color:green">{{music.name}}</h3>
+            <b><p class="card-text">{{music.bio}}</p></b>
+            <a href="#music{{music.id}}" class="btn btn-success" data-toggle="collapse">See Albums</a>
+            <div id="music{{music.id}}" class="collapse">
+                <div class="row"><br>
+                  
+                    <div class="card col-sm-6" style="width:200px;"  *ngFor="let album of music.albums">
+                        <img class="card-img-top" src='./assets/albums/{{album.cover}}.jpg' [style.width.px]="imgwidth" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title"><b>Title:</b>{{album.title}}</h4>
+                            <h4 class="card-title"><b>Year:</b>{{album.year}}</h4>
+                            <h4 class="card-title"><b>Price:</b>{{album.price}}</h4>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div id="artist{{artist.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">-->
+  
+      <!-- Modal content-->
+  <!-- <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{artist.name}}'s album</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 album" *ngFor="let album of artist.albums">
+                  <img style="width:100%" src='./assets/albums/{{album.cover}}.jpg'><br>
+                  {{album.title}}<br>
+                  <b>Year:</b>{{album.year}}<br>
+                  <b>Price:</b>{{album.price}}
+                  
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>-->
+        
+       
+       
+          

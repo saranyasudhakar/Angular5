@@ -1,0 +1,132 @@
+<h1 style="color:green" class='text-center'>Template-Driven Forms</h1>
+     <div class="panel panel-success">
+         <div class="panel-heading">
+            <h3> Employee Form</h3>
+         </div>
+        <div class="panel-body">
+        <form #form="ngForm" novalidate (submit)="submitForm(form)">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group" [class.has-error]="firstname.invalid">
+                <label for='firstName' class="control-label">FirstName</label>
+                <input type="text" 
+                       placeholder="firstName" 
+                       name="firstName"
+                       id="firstName"
+                       required
+                       class="form-control"
+                       [ngModel]="model.firstName"
+                       (ngModelChange)="fisrtToUpper($event)"
+                       #firstname="ngModel"
+                >
+                <div class="alert alert-danger" *ngIf = "firstname.invalid">
+                     FirstName is Required
+                </div>
+                 <div>
+                     <h3>Classes</h3>
+                     <h3>{{firstname.invalid}}</h3>
+                 </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                 <label for='lasttName' class="control-label">LastName</label>
+                 <input type="text" 
+                        placeholder="lastName" 
+                        name="lasttName"
+                        id="lastName"
+                        class="form-control"
+                        [(ngModel)]="model.lastName"
+                 >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6">
+                <div class="form-group" [class.has-error]="email.invalid && email.touched">
+                    <label for='email' class="control-label">Email</label>
+                    <input type="text" 
+                           placeholder="email" 
+                           name="email"
+                           id="email"
+                           class="form-control"
+                           [(ngModel)]="model.email"
+                           pattern ="^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-z]{2,5})$"
+                           #email="ngModel"
+                    >
+                    <div class="alert alert-danger" *ngIf="email.invalid && email.touched" >
+                            Please enter valid pattern
+                       </div>
+                </div>
+            </div>
+                <div class="form-group" [class.has-error]="password.invalid && password.touched">
+                    <div class="col-md-6">
+                     <label for='password' class="control-label">Password</label>
+                     <input type="text" 
+                            placeholder="password" 
+                            name="password"
+                            id="password"
+                            class="form-control"
+                            minlength= 5
+                            [(ngModel)]="model.password"
+                            #password="ngModel"
+                     >
+                     <div class="alert alert-danger" *ngIf = "password.invalid && password.touched">
+                           Minimum length must be 5
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio"
+                            name="gender"
+                            value="female"
+                            [(ngModel)]="model.gender">
+                            Female
+                </label>
+            </div>
+            <div class="radio">
+                    <label>
+                        <input type="radio"
+                                name="gender"
+                                value="Male"
+                                [(ngModel)]="model.gender">
+                                Male
+                    </label>
+                </div>
+                <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                    name="fullTime"
+                                    [(ngModel)]="model.fullTime" >
+                    
+                                    FullTime
+                        </label>
+                    </div>
+                    <div class="form-group" [class.has-error]="hasCodelangError">
+                        <label for="codelang" class="control-label">Codelang</label>
+                        <select class="form-control"
+                                name="codelang"
+                                id="codelang"
+                                (blur)="validateCodeLang($event)"
+                                [(ngModel)]="model.codelang">
+                           <option value="default">
+                               Please Select Lang
+                           </option>     
+                           <option *ngFor="let lang of languages">
+                              {{ lang }}</option> 
+                           
+                        </select>
+                        <div class="alert alert-danger" *ngIf="hasCodelangError">
+                            Please Select Valid Input
+                        </div>
+                    </div>
+                <button type="submit" 
+                        class="btn btn-success"
+                        [disabled]="disableSubmit">
+                        Submit
+                </button>
+        </form>
+        </div>
+     </div>

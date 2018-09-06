@@ -1,0 +1,74 @@
+
+<h1 class='text-center' style="color:green">@@@Movies Information@@@</h1><br>
+<div class="panel panel-success">
+    <div class="panel panel-heading"><h2>{{title}}</h2></div>
+    <div class="panel panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                <b>Filter By:</b>
+            </div>
+            
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="filterText">
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-6">
+                <h3>Filterd By:{{filterText}}</h3></div>
+            </div>
+        
+        
+        <div class="table-responsive" *ngIf="movies && movies.length">
+            <table class="table">
+                <thead>
+                   <tr class="center">
+                    
+                        
+                        <th><button type='button' class="btn btn-success"
+                            (click)="toggleImage()">{{showImage ? "Hide Image": "Show Image"}}</button></th> 
+                       <th>Name</th>
+                       <th>Language</th>
+                       <th>Type</th>
+                       <th >Rating</th>
+                      
+                      
+                      
+                   </tr>
+                </thead>
+                <tbody class="center">
+                    <tr *ngFor="let movie of movies | filterData : filterText" >
+                        
+                     <td>
+                        
+                     <img [src]='movie.imageUrl' [style.width.px]="imageWidth"  *ngIf="showImage"></td>
+        
+                      <td>
+                            <a [routerLink] = "['/movies',movie._id]"
+                            [queryParams]="{name:movie.name,type:movie.type,img:movie.imageUrl}">
+                            {{movie.name | myUpper:'upper'}}
+                                </a>
+                            </td>
+                       <td> {{movie.language |titlecase}}</td>
+                       <!--<td [ngStyle]="{'background-color':movie.rate>4 ?'green':'gray'}">{{movie.rate}}</td>-->
+                       <td>{{movie.type }}</td>
+                       <td><movie-star [rating]="movie.rate" (ratingclicked)='OnDataRecive($event)'></movie-star></td>
+                      
+                       <td> <a [attr.href] = "'#'+ movie._id" class="btn btn-success" data-toggle="collapse" >ShowImage</a>
+                
+                        <div id = "{{movie._id}}" class="collapse"><img [src]='movie.imageUrl' [style.width.px]="imageWidth" >
+                              
+                    </div>
+                  </td>
+                        
+                   </tr>          
+                        
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>    
+                       
+                        
+                    
+
+                
